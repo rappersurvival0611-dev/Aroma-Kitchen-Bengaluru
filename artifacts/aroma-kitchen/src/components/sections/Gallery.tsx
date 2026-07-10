@@ -8,6 +8,9 @@ const galleryImages = [
   { id: 3, src: '/gallery4.jpg', alt: 'Brick wall dining corner at Aroma Kitchen', span: 'col-span-1 row-span-1' },
   { id: 4, src: '/gallery3.jpg', alt: 'Cozy table setting at Aroma Kitchen', span: 'col-span-1 row-span-1' },
   { id: 5, src: '/hero.jpg', alt: 'Aroma Kitchen dining room', span: 'col-span-1 row-span-1 md:col-span-2 md:row-span-1' },
+  { id: 6, src: '/about.jpg', alt: 'Aroma Kitchen reception and seating area', span: 'col-span-1 row-span-1' },
+  { id: 7, src: '/dish1.jpg', alt: 'Guests enjoying a family meal at Aroma Kitchen', span: 'col-span-1 row-span-1' },
+  { id: 8, src: '/dish2.jpg', alt: 'Table setting at Aroma Kitchen', span: 'col-span-1 row-span-1' },
 ];
 
 export function Gallery() {
