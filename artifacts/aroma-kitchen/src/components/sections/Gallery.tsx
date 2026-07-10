@@ -5,7 +5,7 @@ import { X, ZoomIn } from 'lucide-react';
 const galleryImages = [
   { id: 1, src: '/gallery1.jpg', alt: 'Guests enjoying a meal together at Aroma Kitchen', span: 'col-span-1 row-span-1 md:col-span-2 md:row-span-2' },
   { id: 2, src: '/gallery2.jpg', alt: 'Dining area with warm lighting at Aroma Kitchen', span: 'col-span-1 row-span-1' },
-  { id: 3, src: '/about.jpg', alt: 'Restaurant interior seating', span: 'col-span-1 row-span-1' },
+  { id: 3, src: '/gallery4.jpg', alt: 'Brick wall dining corner at Aroma Kitchen', span: 'col-span-1 row-span-1' },
   { id: 4, src: '/gallery3.jpg', alt: 'Cozy table setting at Aroma Kitchen', span: 'col-span-1 row-span-1' },
   { id: 5, src: '/hero.jpg', alt: 'Aroma Kitchen dining room', span: 'col-span-1 row-span-1 md:col-span-2 md:row-span-1' },
 ];
