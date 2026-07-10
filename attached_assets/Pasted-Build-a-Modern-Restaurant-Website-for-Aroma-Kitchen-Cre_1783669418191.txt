@@ -1,0 +1,256 @@
+Build a Modern Restaurant Website for "Aroma Kitchen"
+
+Create a premium, responsive, SEO-optimized restaurant website for Aroma Kitchen, based on the uploaded restaurant photos.
+
+Brand Identity
+
+Aroma Kitchen is a warm, family-friendly Indian restaurant serving authentic Indian cuisine. The restaurant has:
+
+Cozy indoor dining
+Dark wooden furniture
+Blue table coverings
+Green accent walls
+Warm ambient lighting
+Casual family atmosphere
+Affordable pricing
+Dine-in, takeaway, and group dining
+
+The website should feel:
+
+Modern and premium
+Warm and welcoming
+Trustworthy
+Mobile-first
+Fast loading
+Similar quality to top restaurant websites
+Technology
+
+Build using:
+
+Next.js
+React
+Tailwind CSS
+Framer Motion animations
+Fully responsive design
+SEO best practices
+Optimized image gallery
+Clean component structure
+Color Palette
+
+Primary: #D97706 (warm saffron orange)
+
+Secondary: #0F172A (deep charcoal)
+
+Accent: #16A34A (Indian-inspired green)
+
+Background: #FFF8F0
+
+Text: #1E293B
+
+Website Sections
+1. Hero Section
+
+Large full-width hero.
+
+Headline:
+
+"Authentic Indian Flavors, Served Fresh Every Day"
+
+Subheadline:
+
+"Experience the rich taste of traditional Indian cuisine in a warm and welcoming atmosphere."
+
+Buttons:
+
+View Menu
+Reserve a Table
+
+Add subtle parallax and fade-in animations.
+
+2. About Aroma Kitchen
+
+Tell the story of the restaurant.
+
+Include:
+
+Authentic Indian recipes
+Fresh ingredients
+Family-friendly dining
+Comfortable atmosphere
+Great service
+
+Use restaurant interior images from the gallery.
+
+3. Signature Dishes
+
+Create attractive food cards with:
+
+Butter Chicken
+Chicken Biryani
+Paneer Butter Masala
+Tandoori Chicken
+Garlic Naan
+Chicken Tikka
+
+Each card should include:
+
+Image
+Short description
+Price placeholder
+
+Hover animations.
+
+4. Full Menu Section
+
+Organize menu into categories:
+
+Starters
+Chicken 65
+Chilli Chicken
+Paneer 65
+Gobi Manchurian
+Main Course
+Butter Chicken
+Chicken Curry
+Kadai Chicken
+Chicken Tikka Masala
+Paneer Butter Masala
+Dal Tadka
+Biryani
+Chicken Biryani
+Mutton Biryani
+Veg Biryani
+Breads
+Butter Naan
+Garlic Naan
+Roti
+Kulcha
+Beverages
+Mango Lassi
+Sweet Lassi
+Soft Drinks
+
+Display in modern tabbed menu format.
+
+5. Gallery
+
+Create a masonry-style image gallery using the uploaded restaurant images.
+
+Include:
+
+Dining area
+Restaurant interiors
+Guests enjoying food
+Menu photos
+
+Lightbox popup on click.
+
+Smooth animations.
+
+6. Why Choose Us
+
+Display cards:
+
+🍛 Authentic Indian Taste
+
+🌿 Fresh Ingredients
+
+👨‍👩‍👧 Family Friendly
+
+🚀 Fast Service
+
+💰 Affordable Pricing
+
+✨ Comfortable Ambience
+
+7. Customer Reviews
+
+Create attractive review cards.
+
+Sample reviews:
+
+★★★★★
+
+"Best Indian food in town. Excellent flavor and service."
+
+★★★★★
+
+"Very cozy atmosphere and delicious biryani."
+
+★★★★★
+
+"Perfect place for family dinners."
+
+8. Reservation Section
+
+Modern reservation form:
+
+Name
+Phone
+Email
+Date
+Time
+Guests
+
+Validation included.
+
+9. Contact Section
+
+Include:
+
+Address placeholder
+Phone placeholder
+Email placeholder
+Google Maps embed
+Opening hours
+
+Hours:
+
+Monday–Sunday
+
+11:00 AM – 10:30 PM
+
+10. Footer
+
+Include:
+
+Logo
+Quick links
+Social media icons
+Contact details
+Copyright
+Design Requirements
+Elegant food photography focus
+Smooth scroll animations
+Sticky navigation bar
+Mobile hamburger menu
+Scroll-to-top button
+Loading animations
+Dark mode support
+Optimized performance
+Accessibility compliant
+SEO meta tags
+Open Graph tags
+Structured data for local restaurant SEO
+Extra Features
+Floating WhatsApp order button
+Online order CTA section
+Featured dish spotlight
+Instagram-style gallery layout
+Animated counters
+Reservation success modal
+Modern glassmorphism effects
+Professional typography using Google Fonts (Poppins + Playfair Display)
+Deliverables
+
+Generate a complete production-ready Next.js project with:
+
+Organized folder structure
+Reusable React components
+Tailwind styling
+Responsive layouts
+Sample content
+Placeholder images that can be replaced with uploaded restaurant photos
+Clean, maintainable code
+
+The final website should look like a premium Indian restaurant brand while reflecting the warm, cozy atmosphere shown in the restaurant photos.

@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "Aroma Kitchen"
+version = "1.0.0"
+id = "artifacts/aroma-kitchen"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18139
+
+[services.development]
+run = "pnpm --filter @workspace/aroma-kitchen run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/aroma-kitchen", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/aroma-kitchen/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18139"
+BASE_PATH = "/"
