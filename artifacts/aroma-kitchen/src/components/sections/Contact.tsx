@@ -21,9 +21,9 @@ export function Contact() {
               <div>
                 <h3 className="font-serif text-2xl font-bold text-foreground mb-2">Location</h3>
                 <p className="text-muted-foreground text-lg">
-                  123 Spice Avenue<br />
-                  Culinary District<br />
-                  New York, NY 10001
+                  Jal Vayu Towers, Temple Rd<br />
+                  Muneswara Layout, Sadanandanagar<br />
+                  Bengaluru, Karnataka 560038
                 </p>
               </div>
             </div>
