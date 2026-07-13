@@ -1,5 +1,15 @@
 import { motion } from 'framer-motion';
-import { ChefHat, Leaf, Heart } from 'lucide-react';
+import { Clock, Leaf, Heart } from 'lucide-react';
+
+const HOURS = [
+  { day: 'Monday', time: '07:30 – 09:00' },
+  { day: 'Tuesday', time: 'Closed' },
+  { day: 'Wednesday', time: '07:30 – 09:30' },
+  { day: 'Thursday', time: '07:30 – 09:30' },
+  { day: 'Friday', time: '07:30 – 09:30' },
+  { day: 'Saturday', time: '07:30 – 09:30' },
+  { day: 'Sunday', time: '07:30 – 09:30' },
+];
 
 export function About() {
   return (
@@ -28,16 +38,23 @@ export function About() {
             <div className="absolute -inset-4 border-2 border-primary/20 rounded-2xl -z-10 translate-x-6 translate-y-6" />
             
             {/* Floating badge - centered horizontally, floating slightly below the image */}
-            <div className="absolute left-1/2 bottom-0 z-20 hidden w-[calc(100%-2rem)] max-w-xs -translate-x-1/2 translate-y-5 rounded-xl bg-white p-6 shadow-xl md:block">
-              <div className="flex gap-4 items-start">
-                <div className="p-3 bg-primary/10 text-primary rounded-full shrink-0">
-                  <ChefHat className="w-6 h-6" />
+            <div className="absolute left-1/2 bottom-0 z-20 hidden w-[calc(100%-2rem)] max-w-xs -translate-x-1/2 translate-y-5 rounded-xl bg-white p-5 shadow-xl md:block">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="p-2 bg-primary/10 text-primary rounded-full shrink-0">
+                  <Clock className="w-5 h-5" />
                 </div>
-                <div>
-                  <h4 className="font-serif font-bold text-foreground">Master Chefs</h4>
-                  <p className="text-sm text-muted-foreground mt-1">Decades of experience in authentic Indian culinary arts.</p>
-                </div>
+                <h4 className="font-serif font-bold text-foreground">Restaurant Hours</h4>
               </div>
+              <ul className="space-y-1.5">
+                {HOURS.map(({ day, time }) => (
+                  <li key={day} className="flex items-center justify-between gap-4 text-sm">
+                    <span className="text-muted-foreground">{day}</span>
+                    <span className={time === 'Closed' ? 'font-medium text-destructive' : 'font-medium text-foreground'}>
+                      {time}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </motion.div>
 
