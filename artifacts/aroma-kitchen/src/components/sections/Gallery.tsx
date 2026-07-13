@@ -28,7 +28,7 @@ export function Gallery() {
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6">Our Gallery</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 md:auto-rows-[250px] gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 md:auto-rows-[250px] md:grid-flow-row-dense gap-4">
           {galleryImages.map((image, index) => (
             <motion.div
               key={image.id}
