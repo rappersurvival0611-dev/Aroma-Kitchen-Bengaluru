@@ -22,27 +22,27 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="container relative z-10 mx-auto px-4 md:px-6 text-center text-white mt-16">
+      <div className="container relative z-10 mx-auto flex flex-col items-center justify-center px-4 text-center text-white md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="max-w-4xl mx-auto"
+          className="flex w-full max-w-4xl flex-col items-center justify-center"
         >
-          <span className="inline-block py-1 px-3 rounded-full bg-primary/20 border border-primary/30 text-primary-foreground text-sm font-medium tracking-wider uppercase mb-6 backdrop-blur-sm">
+          <span className="mb-6 inline-block rounded-full border border-primary/30 bg-primary/20 px-3 py-1 text-sm font-medium uppercase tracking-wider text-primary-foreground backdrop-blur-sm">
             Welcome to Aroma Kitchen
           </span>
-          
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-tight mb-6 text-white drop-shadow-lg">
+
+          <h1 className="text-5xl font-serif font-bold leading-tight text-white drop-shadow-lg md:text-7xl lg:text-8xl">
             Authentic Indian Flavors, <br />
-            <span className="text-primary italic font-light">Served Fresh</span> Every Day
+            <span className="font-light italic text-primary">Served Fresh</span> Every Day
           </h1>
-          
-          <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+
+          <p className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-white/90 md:text-xl">
             Experience the rich taste of traditional Indian cuisine in a warm and welcoming atmosphere. Discover a world of spices, crafted with passion.
           </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+
+          <div className="mt-10 flex w-full flex-col items-center justify-center gap-4 sm:flex-row">
             <button
               onClick={() => scrollTo('#reservation')}
               className="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-full font-medium text-lg flex items-center justify-center gap-2 hover:bg-primary/90 transition-all hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0"
