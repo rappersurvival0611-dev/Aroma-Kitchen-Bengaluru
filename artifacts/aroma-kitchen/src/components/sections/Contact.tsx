@@ -34,7 +34,7 @@ export function Contact() {
                   <Phone className="w-6 h-6" />
                 </div>
                 <h3 className="font-serif text-xl font-bold text-foreground mb-2">Phone</h3>
-                <p className="text-muted-foreground">(555) 123-4567</p>
+                <p className="text-muted-foreground">082776 63021</p>
               </div>
 
               <div className="bg-card p-8 rounded-2xl border border-border shadow-sm flex flex-col items-center text-center">
@@ -51,7 +51,7 @@ export function Contact() {
                 <h3 className="font-serif text-2xl font-bold mb-2">Opening Hours</h3>
                 <p className="text-secondary-foreground/80 flex items-center gap-2">
                   <Clock className="w-5 h-5" />
-                  Monday - Sunday: 11:00 AM - 10:30 PM
+                  Monday - Sunday: 7:30 AM - 10:00 PM
                 </p>
               </div>
             </div>

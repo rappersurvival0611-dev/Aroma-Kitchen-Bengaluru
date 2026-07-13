@@ -58,7 +58,7 @@ export function Reservation() {
               <div className="space-y-6">
                 <div>
                   <h4 className="font-bold mb-1 opacity-90">Opening Hours</h4>
-                  <p className="opacity-80">Mon - Sun: 11:00 AM - 10:30 PM</p>
+                  <p className="opacity-80">Mon - Sun: 7:30 AM - 10:00 PM</p>
                 </div>
                 <div>
                   <h4 className="font-bold mb-1 opacity-90">Location</h4>
@@ -66,7 +66,7 @@ export function Reservation() {
                 </div>
                 <div>
                   <h4 className="font-bold mb-1 opacity-90">Contact</h4>
-                  <p className="opacity-80">(555) 123-4567</p>
+                  <p className="opacity-80">082776 63021</p>
                 </div>
               </div>
             </div>
@@ -168,7 +168,9 @@ export function Reservation() {
                           className="w-full pl-10 pr-4 py-3 bg-muted border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none"
                         >
                           <option value="">Select time</option>
-                          <option value="11:30">11:30 AM</option>
+                          <option value="07:30">7:30 AM</option>
+                          <option value="08:00">8:00 AM</option>
+                          <option value="09:00">9:00 AM</option>
                           <option value="12:00">12:00 PM</option>
                           <option value="12:30">12:30 PM</option>
                           <option value="13:00">1:00 PM</option>
@@ -177,7 +179,7 @@ export function Reservation() {
                           <option value="19:00">7:00 PM</option>
                           <option value="19:30">7:30 PM</option>
                           <option value="20:00">8:00 PM</option>
-                          <option value="20:30">8:30 PM</option>
+                          <option value="21:30">9:30 PM</option>
                         </select>
                       </div>
                       {errors.time && <p className="text-sm text-destructive">{errors.time.message}</p>}

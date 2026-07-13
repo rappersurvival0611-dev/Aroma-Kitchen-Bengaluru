@@ -59,7 +59,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-primary shrink-0" />
-                <span className="text-secondary-foreground/70">(555) 123-4567</span>
+                <span className="text-secondary-foreground/70">082776 63021</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-primary shrink-0" />
@@ -75,7 +75,7 @@ export function Footer() {
                 <Clock className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                 <div>
                   <p className="font-medium text-white">Monday - Sunday</p>
-                  <p className="text-secondary-foreground/70">11:00 AM - 10:30 PM</p>
+                  <p className="text-secondary-foreground/70">7:30 AM - 10:00 PM</p>
                 </div>
               </li>
             </ul>
