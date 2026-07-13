@@ -3,7 +3,7 @@ import { ChefHat, Leaf, Heart } from 'lucide-react';
 
 export function About() {
   return (
-    <section id="about" className="py-24 bg-background relative overflow-hidden">
+    <section id="about" className="pt-24 pb-32 md:pb-40 bg-background relative overflow-hidden">
       {/* Decorative background element */}
       <div className="absolute top-0 right-0 -mr-48 -mt-48 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
       
@@ -27,8 +27,8 @@ export function About() {
             {/* Decorative frame */}
             <div className="absolute -inset-4 border-2 border-primary/20 rounded-2xl -z-10 translate-x-6 translate-y-6" />
             
-            {/* Floating badge */}
-            <div className="absolute -right-8 bottom-12 bg-white p-6 rounded-xl shadow-xl z-20 hidden md:block max-w-xs">
+            {/* Floating badge - centered horizontally, floating slightly below the image */}
+            <div className="absolute left-1/2 bottom-0 z-20 hidden w-[calc(100%-2rem)] max-w-xs -translate-x-1/2 translate-y-5 rounded-xl bg-white p-6 shadow-xl md:block">
               <div className="flex gap-4 items-start">
                 <div className="p-3 bg-primary/10 text-primary rounded-full shrink-0">
                   <ChefHat className="w-6 h-6" />
