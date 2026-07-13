@@ -10,35 +10,37 @@ export function Hero() {
   };
 
   return (
-    <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden py-28">
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0">
         <img
           src="/hero.jpg"
           alt="Cozy Indian Restaurant Interior"
-          className="w-full h-full object-cover object-center"
+          className="h-full w-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-secondary/70"></div>
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-secondary/75"></div>
       </div>
 
-      {/* Content */}
-      <div className="container relative z-10 mx-auto flex flex-col items-center justify-center px-4 text-center text-white md:px-6">
+      {/* Content - single flex column, centered both axes */}
+      <div className="relative z-10 flex w-full flex-col items-center justify-center px-4 text-center text-white sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="flex w-full max-w-4xl flex-col items-center justify-center"
+          className="flex w-full max-w-3xl flex-col items-center justify-center"
         >
           <span className="mb-6 inline-block rounded-full border border-primary/30 bg-primary/20 px-3 py-1 text-sm font-medium uppercase tracking-wider text-primary-foreground backdrop-blur-sm">
             Welcome to Aroma Kitchen
           </span>
 
-          <h1 className="text-5xl font-serif font-bold leading-tight text-white drop-shadow-lg md:text-7xl lg:text-8xl">
-            Authentic Indian Flavors, <br />
-            <span className="font-light italic text-primary">Served Fresh</span> Every Day
+          <h1 className="font-serif font-bold leading-[1.15] text-white drop-shadow-md text-[clamp(2.25rem,4vw+1.25rem,5.5rem)]">
+            Authentic Indian Flavors,{' '}
+            <span className="whitespace-nowrap font-light italic text-primary">Served Fresh</span>{' '}
+            Every&nbsp;Day
           </h1>
 
-          <p className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-white/90 md:text-xl">
+          <p className="mt-6 max-w-[700px] font-light leading-relaxed text-white/90 text-[clamp(1rem,0.5vw+0.9rem,1.25rem)] md:mt-8">
             Experience the rich taste of traditional Indian cuisine in a warm and welcoming atmosphere. Discover a world of spices, crafted with passion.
           </p>
 
