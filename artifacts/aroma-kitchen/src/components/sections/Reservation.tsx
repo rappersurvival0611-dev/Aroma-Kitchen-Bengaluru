@@ -58,7 +58,7 @@ export function Reservation() {
               <div className="space-y-6">
                 <div>
                   <h4 className="font-bold mb-1 opacity-90">Opening Hours</h4>
-                  <p className="opacity-80">Mon - Sun: 7:30 AM - 10:00 PM</p>
+                  <p className="opacity-80">Mon - Sun: 7:30 AM - 9:30 PM</p>
                 </div>
                 <div>
                   <h4 className="font-bold mb-1 opacity-90">Location</h4>

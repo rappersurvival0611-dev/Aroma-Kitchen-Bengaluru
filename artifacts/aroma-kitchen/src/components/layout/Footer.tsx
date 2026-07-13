@@ -75,7 +75,7 @@ export function Footer() {
                 <Clock className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                 <div>
                   <p className="font-medium text-white">Monday - Sunday</p>
-                  <p className="text-secondary-foreground/70">7:30 AM - 10:00 PM</p>
+                  <p className="text-secondary-foreground/70">7:30 AM - 9:30 PM</p>
                 </div>
               </li>
             </ul>

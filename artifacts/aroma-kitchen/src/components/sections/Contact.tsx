@@ -51,7 +51,7 @@ export function Contact() {
                 <h3 className="font-serif text-2xl font-bold mb-2">Opening Hours</h3>
                 <p className="text-secondary-foreground/80 flex items-center gap-2">
                   <Clock className="w-5 h-5" />
-                  Monday - Sunday: 7:30 AM - 10:00 PM
+                  Monday - Sunday: 7:30 AM - 9:30 PM
                 </p>
               </div>
             </div>
