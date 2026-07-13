@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Utensils, Leaf, Users, Zap, DollarSign, Armchair } from 'lucide-react';
+import { Utensils, Leaf, Users, Zap, IndianRupee, Armchair } from 'lucide-react';
 
 const features = [
   {
@@ -23,7 +23,7 @@ const features = [
     desc: 'Hot, delicious meals served promptly without the wait.',
   },
   {
-    icon: DollarSign,
+    icon: IndianRupee,
     title: 'Affordable Pricing',
     desc: 'Premium quality dining that fits your everyday budget.',
   },
