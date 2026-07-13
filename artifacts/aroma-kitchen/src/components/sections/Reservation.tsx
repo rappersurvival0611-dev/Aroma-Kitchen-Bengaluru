@@ -62,7 +62,7 @@ export function Reservation() {
                 </div>
                 <div>
                   <h4 className="font-bold mb-1 opacity-90">Location</h4>
-                  <p className="opacity-80">123 Spice Avenue, NY 10001</p>
+                  <p className="opacity-80">Jal Vayu Towers, Temple Rd, Muneswara Layout, Sadanandanagar, Bengaluru, Karnataka 560038</p>
                 </div>
                 <div>
                   <h4 className="font-bold mb-1 opacity-90">Contact</h4>
