@@ -26,19 +26,6 @@ export function About() {
             </div>
             {/* Decorative frame */}
             <div className="absolute -inset-4 border-2 border-primary/20 rounded-2xl -z-10 translate-x-6 translate-y-6" />
-            
-            {/* Floating card - sits below the image, only its top edge (~24px) overlaps the image for a floating effect */}
-            <div className="absolute left-1/2 top-full z-20 hidden w-[calc(100%-2rem)] max-w-xs -translate-x-1/2 -translate-y-6 rounded-xl bg-white p-6 shadow-xl md:block">
-              <div className="flex gap-4 items-start">
-                <div className="p-3 bg-primary/10 text-primary rounded-full shrink-0">
-                  <ChefHat className="w-6 h-6" />
-                </div>
-                <div>
-                  <h4 className="font-serif font-bold text-foreground">Master Chefs</h4>
-                  <p className="text-sm text-muted-foreground mt-1">Decades of experience in authentic Indian culinary arts.</p>
-                </div>
-              </div>
-            </div>
           </motion.div>
 
           <motion.div
@@ -82,6 +69,16 @@ export function About() {
                 <div>
                   <h4 className="font-bold text-foreground mb-1">Family Friendly</h4>
                   <p className="text-sm text-muted-foreground">A welcoming environment perfect for family dinners and gatherings.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="p-2 bg-accent/10 text-accent rounded-lg">
+                  <ChefHat className="w-6 h-6" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-foreground mb-1">Master Chefs</h4>
+                  <p className="text-sm text-muted-foreground">Decades of experience in authentic Indian culinary arts.</p>
                 </div>
               </div>
             </div>
