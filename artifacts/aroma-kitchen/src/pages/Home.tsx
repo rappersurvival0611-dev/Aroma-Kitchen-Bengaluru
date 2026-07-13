@@ -6,6 +6,7 @@ import { Gallery } from '@/components/sections/Gallery';
 import { Features } from '@/components/sections/Features';
 import { Reviews } from '@/components/sections/Reviews';
 import { Reservation } from '@/components/sections/Reservation';
+import { Timings } from '@/components/sections/Timings';
 import { Contact } from '@/components/sections/Contact';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
@@ -26,6 +27,7 @@ export default function Home() {
         <Reviews />
         <Reservation />
         <Contact />
+        <Timings />
       </main>
       <Footer />
       <FloatingWhatsApp />
