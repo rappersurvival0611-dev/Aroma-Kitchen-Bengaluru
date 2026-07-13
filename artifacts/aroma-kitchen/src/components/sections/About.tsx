@@ -37,8 +37,8 @@ export function About() {
             {/* Decorative frame */}
             <div className="absolute -inset-4 border-2 border-primary/20 rounded-2xl -z-10 translate-x-6 translate-y-6" />
             
-            {/* Floating badge - centered horizontally, floating slightly below the image */}
-            <div className="absolute left-1/2 bottom-0 z-20 hidden w-[calc(100%-2rem)] max-w-xs -translate-x-1/2 translate-y-5 rounded-xl bg-white p-5 shadow-xl md:block">
+            {/* Floating card - sits below the image, only its top edge (~24px) overlaps the image for a floating effect */}
+            <div className="absolute left-1/2 top-full z-20 hidden w-[calc(100%-2rem)] max-w-xs -translate-x-1/2 -translate-y-6 rounded-xl bg-white p-5 shadow-xl md:block">
               <div className="flex items-center gap-2 mb-3">
                 <div className="p-2 bg-primary/10 text-primary rounded-full shrink-0">
                   <Clock className="w-5 h-5" />
