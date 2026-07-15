@@ -29,8 +29,10 @@ function timeLabel(time: string): string {
 }
 
 function guestsLabel(guests: string): string {
-  return guests === '7+' ? '7+ People' : `${guests} ${guests === '1' ? 'Person' : 'People'}`;
+  return `${guests} ${guests === '1' ? 'Person' : 'People'}`;
 }
+
+const GUEST_OPTIONS = Array.from({ length: 20 }, (_, i) => String(i + 1));
 
 export function Reservation() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -245,13 +247,11 @@ export function Reservation() {
                           className="w-full pl-10 pr-4 py-3 bg-muted border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none"
                         >
                           <option value="">Number of guests</option>
-                          <option value="1">1 Person</option>
-                          <option value="2">2 People</option>
-                          <option value="3">3 People</option>
-                          <option value="4">4 People</option>
-                          <option value="5">5 People</option>
-                          <option value="6">6 People</option>
-                          <option value="7+">7+ People (Call us)</option>
+                          {GUEST_OPTIONS.map((g) => (
+                            <option key={g} value={g}>
+                              {guestsLabel(g)}
+                            </option>
+                          ))}
                         </select>
                       </div>
                       {errors.guests && <p className="text-sm text-destructive">{errors.guests.message}</p>}
