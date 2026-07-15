@@ -10,6 +10,10 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: reviews
+    description: Customer review operations
+  - name: reservations
+    description: Table reservation operations
 paths:
   /healthz:
     get:
@@ -24,6 +28,82 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /reviews:
+    get:
+      operationId: listReviews
+      tags: [reviews]
+      summary: List approved reviews
+      description: Returns all approved customer reviews, sorted newest first
+      responses:
+        "200":
+          description: List of approved reviews
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+    post:
+      operationId: createReview
+      tags: [reviews]
+      summary: Submit a new review
+      description: Validates and stores a new customer review
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReviewInput"
+      responses:
+        "201":
+          description: Review created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Review"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+        "429":
+          description: Too many submissions
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /reservations:
+    post:
+      operationId: createReservation
+      tags: [reservations]
+      summary: Book a table
+      description: Validates and stores a new table reservation, and notifies the restaurant via WhatsApp
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReservationInput"
+      responses:
+        "201":
+          description: Reservation created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Reservation"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+        "429":
+          description: Too many submissions
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
 components:
   schemas:
     HealthStatus:
@@ -33,4 +113,114 @@ components:
           type: string
       required:
         - status
+    ApiErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+    Review:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: ["string", "null"]
+        rating:
+          type: integer
+          minimum: 1
+          maximum: 5
+        message:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - rating
+        - message
+        - createdAt
+    ReviewInput:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 2
+          maxLength: 100
+        email:
+          type: string
+          maxLength: 255
+        rating:
+          type: integer
+          minimum: 1
+          maximum: 5
+        message:
+          type: string
+          minLength: 10
+          maxLength: 1000
+      required:
+        - name
+        - rating
+        - message
+    Reservation:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        phone:
+          type: string
+        email:
+          type: ["string", "null"]
+        date:
+          type: string
+        time:
+          type: string
+        guests:
+          type: string
+        status:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - phone
+        - date
+        - time
+        - guests
+        - status
+        - createdAt
+    ReservationInput:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 2
+          maxLength: 100
+        phone:
+          type: string
+          minLength: 7
+          maxLength: 20
+        email:
+          type: string
+          maxLength: 255
+        date:
+          type: string
+        time:
+          type: string
+        guests:
+          type: string
+      required:
+        - name
+        - phone
+        - date
+        - time
+        - guests
 
