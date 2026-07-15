@@ -1,0 +1,2 @@
+- [Zod v3 vs v4 in OpenAPI codegen](zod-v3-orval-codegen.md) — never use `format: email` in openapi.yaml specs generated with Orval when the workspace zod is v3.
+- [WhatsApp notifications without Twilio](whatsapp-walink-pattern.md) — default to wa.me pre-filled links for restaurant-style WhatsApp notifications instead of Twilio API.

@@ -4,6 +4,10 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CalendarDays, Clock, Users, User, Phone, Mail, CheckCircle2 } from 'lucide-react';
+import { useCreateReservation } from '@workspace/api-client-react';
+import { useToast } from '@/hooks/use-toast';
+
+const RESTAURANT_WHATSAPP_NUMBER = '918277663021';
 
 const reservationSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -16,23 +20,70 @@ const reservationSchema = z.object({
 
 type ReservationFormValues = z.infer<typeof reservationSchema>;
 
+function timeLabel(time: string): string {
+  const [hourStr, minute] = time.split(':');
+  const hour = Number(hourStr);
+  const period = hour >= 12 ? 'PM' : 'AM';
+  const displayHour = hour % 12 === 0 ? 12 : hour % 12;
+  return `${displayHour}:${minute} ${period}`;
+}
+
+function guestsLabel(guests: string): string {
+  return guests === '7+' ? '7+ People' : `${guests} ${guests === '1' ? 'Person' : 'People'}`;
+}
+
 export function Reservation() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { toast } = useToast();
 
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<ReservationFormValues>({
     resolver: zodResolver(reservationSchema),
   });
 
-  const onSubmit = (data: ReservationFormValues) => {
-    // Simulate API call
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        console.log("Reservation Data:", data);
-        setIsSubmitted(true);
-        reset();
-        resolve(true);
-      }, 1000);
-    });
+  const { mutateAsync } = useCreateReservation({
+    mutation: {
+      onError: (error) => {
+        const message =
+          (error as { status?: number })?.status === 429
+            ? 'Please wait a moment before submitting another reservation.'
+            : 'Something went wrong while booking your table. Please try again.';
+        toast({ title: 'Reservation failed', description: message, variant: 'destructive' });
+      },
+    },
+  });
+
+  const onSubmit = async (data: ReservationFormValues) => {
+    try {
+      await mutateAsync({
+        data: {
+          name: data.name,
+          phone: data.phone,
+          email: data.email,
+          date: data.date,
+          time: data.time,
+          guests: data.guests,
+        },
+      });
+    } catch {
+      // Error toast is already shown by the mutation's onError handler.
+      return;
+    }
+
+    const message = [
+      'New table reservation request:',
+      `Name: ${data.name}`,
+      `Phone: ${data.phone}`,
+      `Email: ${data.email}`,
+      `Date: ${data.date}`,
+      `Time: ${timeLabel(data.time)}`,
+      `Guests: ${guestsLabel(data.guests)}`,
+    ].join('\n');
+
+    const waUrl = `https://wa.me/${RESTAURANT_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
+
+    setIsSubmitted(true);
+    reset();
   };
 
   return (
@@ -87,7 +138,7 @@ export function Reservation() {
                   </div>
                   <h3 className="text-3xl font-serif font-bold text-foreground mb-4">Reservation Confirmed!</h3>
                   <p className="text-muted-foreground mb-8 max-w-xs mx-auto">
-                    Thank you for booking with Aroma Kitchen. We've sent a confirmation to your email.
+                    Thank you for booking with Aroma Kitchen. We've opened WhatsApp with your booking details &mdash; just hit send so our team can confirm it.
                   </p>
                   <button 
                     onClick={() => setIsSubmitted(false)}
