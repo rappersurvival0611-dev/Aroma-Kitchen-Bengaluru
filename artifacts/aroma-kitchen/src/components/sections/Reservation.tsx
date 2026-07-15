@@ -7,7 +7,7 @@ import { CalendarDays, Clock, Users, User, Phone, Mail, CheckCircle2 } from 'luc
 import { useCreateReservation } from '@workspace/api-client-react';
 import { useToast } from '@/hooks/use-toast';
 
-const RESTAURANT_WHATSAPP_NUMBER = '918277663021';
+const RESTAURANT_WHATSAPP_NUMBER = '919986224506';
 
 const reservationSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
