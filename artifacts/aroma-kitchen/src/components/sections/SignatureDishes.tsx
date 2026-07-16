@@ -57,8 +57,6 @@ function OrderNowButton({ name, price }: { name: string; price: string }) {
     addItem(name, price);
     setFlash(true);
     setTimeout(() => setFlash(false), 800);
-    // Open the order panel after a short delay so the user sees the flash
-    setTimeout(() => openModal(), 400);
   };
 
   return (

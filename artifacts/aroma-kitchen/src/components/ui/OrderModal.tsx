@@ -14,10 +14,16 @@ export function OrderModal() {
   const [address, setAddress] = useState('');
   const [errors, setErrors] = useState<{ name?: string; phone?: string; address?: string }>({});
 
-  const totalPrice = items.reduce((sum, item) => {
+  const PACKING_RATE = 10; // ₹10 per container
+
+  const subtotal = items.reduce((sum, item) => {
     const num = parseInt(item.price.replace(/[^0-9]/g, ''), 10);
     return sum + (isNaN(num) ? 0 : num * item.qty);
   }, 0);
+
+  const totalContainers = items.reduce((sum, item) => sum + item.qty, 0);
+  const packingCharges = totalContainers * PACKING_RATE;
+  const totalPrice = subtotal + packingCharges;
 
   const validate = () => {
     const errs: typeof errors = {};
@@ -41,6 +47,8 @@ export function OrderModal() {
       '',
       orderLines,
       '',
+      `Subtotal: ₹${subtotal}`,
+      `Packing charges (${totalContainers} container${totalContainers !== 1 ? 's' : ''} × ₹${PACKING_RATE}): ₹${packingCharges}`,
       `Total: ₹${totalPrice}`,
       '',
       `Name: ${name}`,
@@ -137,10 +145,20 @@ export function OrderModal() {
                       </div>
                     ))}
 
-                    {/* Total */}
-                    <div className="flex justify-between items-center pt-3 px-1 border-t border-border mt-2">
-                      <span className="font-semibold text-foreground">Total</span>
-                      <span className="text-xl font-bold text-primary">₹{totalPrice}</span>
+                    {/* Breakdown */}
+                    <div className="border-t border-border mt-2 pt-3 space-y-2 px-1">
+                      <div className="flex justify-between items-center text-sm text-muted-foreground">
+                        <span>Subtotal</span>
+                        <span>₹{subtotal}</span>
+                      </div>
+                      <div className="flex justify-between items-center text-sm text-muted-foreground">
+                        <span>Packing charges ({totalContainers} container{totalContainers !== 1 ? 's' : ''} × ₹{PACKING_RATE})</span>
+                        <span>₹{packingCharges}</span>
+                      </div>
+                      <div className="flex justify-between items-center pt-2 border-t border-border">
+                        <span className="font-semibold text-foreground">Total</span>
+                        <span className="text-xl font-bold text-primary">₹{totalPrice}</span>
+                      </div>
                     </div>
                   </div>
                 )}
