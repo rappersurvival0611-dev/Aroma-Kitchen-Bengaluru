@@ -16,6 +16,7 @@ const reservationSchema = z.object({
   date: z.string().min(1, { message: "Please select a date." }),
   time: z.string().min(1, { message: "Please select a time." }),
   guests: z.string().min(1, { message: "Please enter number of guests." }),
+  occasion: z.string().min(1, { message: "Please select an occasion." }),
 });
 
 type ReservationFormValues = z.infer<typeof reservationSchema>;
@@ -79,6 +80,7 @@ export function Reservation() {
       `Date: ${data.date}`,
       `Time: ${timeLabel(data.time)}`,
       `Guests: ${guestsLabel(data.guests)}`,
+      `Occasion: ${data.occasion}`,
     ].join('\n');
 
     const waUrl = `https://wa.me/${RESTAURANT_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -238,7 +240,7 @@ export function Reservation() {
                       {errors.time && <p className="text-sm text-destructive">{errors.time.message}</p>}
                     </div>
 
-                    <div className="space-y-2 md:col-span-2">
+                    <div className="space-y-2">
                       <label className="text-sm font-medium text-foreground">Guests</label>
                       <div className="relative">
                         <Users className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -255,6 +257,28 @@ export function Reservation() {
                         </select>
                       </div>
                       {errors.guests && <p className="text-sm text-destructive">{errors.guests.message}</p>}
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-foreground">Occasion</label>
+                      <div className="relative">
+                        <CalendarDays className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                        <select
+                          {...register('occasion')}
+                          className="w-full pl-10 pr-4 py-3 bg-muted border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none"
+                        >
+                          <option value="">Select occasion</option>
+                          <option value="Regular Dining">Regular Dining</option>
+                          <option value="Birthday Celebration">Birthday Celebration</option>
+                          <option value="Anniversary">Anniversary</option>
+                          <option value="Date Night">Date Night</option>
+                          <option value="Family Gathering">Family Gathering</option>
+                          <option value="Business Meal">Business Meal</option>
+                          <option value="Farewell / Get-together">Farewell / Get-together</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </div>
+                      {errors.occasion && <p className="text-sm text-destructive">{errors.occasion.message}</p>}
                     </div>
                   </div>
 
