@@ -1,4 +1,7 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Plus, Check } from 'lucide-react';
+import { useCart } from '@/context/CartContext';
 
 const signatureDishes = [
   {
@@ -45,6 +48,34 @@ const signatureDishes = [
   },
 ];
 
+function OrderNowButton({ name, price }: { name: string; price: string }) {
+  const { addItem, items, openModal } = useCart();
+  const qty = items.find(i => i.name === name)?.qty ?? 0;
+  const [flash, setFlash] = useState(false);
+
+  const handleClick = () => {
+    addItem(name, price);
+    setFlash(true);
+    setTimeout(() => setFlash(false), 800);
+    // Open the order panel after a short delay so the user sees the flash
+    setTimeout(() => openModal(), 400);
+  };
+
+  return (
+    <button
+      onClick={handleClick}
+      className={`w-full py-3 rounded-xl font-medium transition-colors duration-300 flex items-center justify-center gap-2 ${
+        qty > 0
+          ? 'bg-primary text-white'
+          : 'border border-primary text-primary hover:bg-primary hover:text-white'
+      }`}
+    >
+      {flash ? <Check className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+      {qty > 0 ? `Added (${qty})` : 'Order Now'}
+    </button>
+  );
+}
+
 export function SignatureDishes() {
   return (
     <section className="py-24 bg-card relative">
@@ -72,9 +103,9 @@ export function SignatureDishes() {
               className="group bg-background rounded-2xl overflow-hidden shadow-sm border border-border hover:shadow-xl transition-all duration-300 flex flex-col"
             >
               <div className="relative h-64 overflow-hidden">
-                <img 
-                  src={dish.image} 
-                  alt={dish.name} 
+                <img
+                  src={dish.image}
+                  alt={dish.name}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -85,9 +116,7 @@ export function SignatureDishes() {
                   <span className="text-primary font-bold">{dish.price}</span>
                 </div>
                 <p className="text-muted-foreground mb-6 flex-1">{dish.description}</p>
-                <button className="w-full py-3 rounded-xl border border-primary text-primary font-medium hover:bg-primary hover:text-white transition-colors duration-300">
-                  Order Now
-                </button>
+                <OrderNowButton name={dish.name} price={dish.price} />
               </div>
             </motion.div>
           ))}

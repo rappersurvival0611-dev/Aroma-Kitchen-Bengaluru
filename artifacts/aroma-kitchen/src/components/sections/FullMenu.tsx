@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Plus, Check } from 'lucide-react';
+import { useCart } from '@/context/CartContext';
 
 const menuCategories = [
   { id: 'breakfast', label: 'Breakfast (Mon–Fri)' },
@@ -152,6 +154,36 @@ const menuData: Record<string, { name: string; desc?: string; price: string; isV
   ],
 };
 
+function AddButton({ name, price }: { name: string; price: string }) {
+  const { addItem, items } = useCart();
+  const qty = items.find(i => i.name === name)?.qty ?? 0;
+  const [flash, setFlash] = useState(false);
+
+  const handleAdd = () => {
+    addItem(name, price);
+    setFlash(true);
+    setTimeout(() => setFlash(false), 800);
+  };
+
+  return (
+    <button
+      onClick={handleAdd}
+      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 shrink-0 ${
+        qty > 0
+          ? 'bg-primary text-white'
+          : 'border border-primary text-primary hover:bg-primary hover:text-white'
+      }`}
+    >
+      {flash ? (
+        <Check className="w-3.5 h-3.5" />
+      ) : (
+        <Plus className="w-3.5 h-3.5" />
+      )}
+      {qty > 0 ? `${qty} Added` : 'Add'}
+    </button>
+  );
+}
+
 export function FullMenu() {
   const [activeCategory, setActiveCategory] = useState('breakfast');
 
@@ -193,24 +225,26 @@ export function FullMenu() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6"
+              className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4"
             >
               {menuData[activeCategory].map((item, index) => (
                 <div key={index} className="flex flex-col border-b border-border/50 pb-4">
-                  <div className="flex justify-between items-baseline mb-2 gap-4">
-                    <h3 className="font-serif text-xl font-bold text-foreground flex items-center gap-2">
-                      {item.name}
+                  <div className="flex justify-between items-center gap-3">
+                    <h3 className="font-serif text-lg font-bold text-foreground flex items-center gap-2 min-w-0">
+                      <span className="truncate">{item.name}</span>
                       {item.isVeg && (
-                        <span className="inline-block w-4 h-4 border border-accent rounded-sm flex items-center justify-center" title="Vegetarian">
+                        <span className="inline-flex shrink-0 w-4 h-4 border border-accent rounded-sm items-center justify-center" title="Vegetarian">
                           <span className="w-2 h-2 rounded-full bg-accent"></span>
                         </span>
                       )}
                     </h3>
-                    <div className="flex-1 border-b border-dashed border-border/50 mx-2 hidden sm:block"></div>
-                    <span className="text-primary font-bold text-lg shrink-0">{item.price}</span>
+                    <div className="flex items-center gap-2 shrink-0">
+                      <span className="text-primary font-bold">{item.price}</span>
+                      <AddButton name={item.name} price={item.price} />
+                    </div>
                   </div>
                   {item.desc && (
-                    <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+                    <p className="text-muted-foreground text-sm leading-relaxed mt-1">{item.desc}</p>
                   )}
                 </div>
               ))}

@@ -11,27 +11,32 @@ import { Contact } from '@/components/sections/Contact';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { FloatingWhatsApp } from '@/components/ui/FloatingWhatsApp';
+import { OrderModal } from '@/components/ui/OrderModal';
 import { ScrollToTop } from '@/components/ui/ScrollToTop';
+import { CartProvider } from '@/context/CartContext';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <SignatureDishes />
-        <Features />
-        <FullMenu />
-        <Gallery />
-        <Reviews />
-        <Reservation />
-        <Contact />
-        <Timings />
-      </main>
-      <Footer />
-      <FloatingWhatsApp />
-      <ScrollToTop />
-    </div>
+    <CartProvider>
+      <div className="min-h-screen bg-background font-sans text-foreground">
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <SignatureDishes />
+          <Features />
+          <FullMenu />
+          <Gallery />
+          <Reviews />
+          <Reservation />
+          <Contact />
+          <Timings />
+        </main>
+        <Footer />
+        <FloatingWhatsApp />
+        <OrderModal />
+        <ScrollToTop />
+      </div>
+    </CartProvider>
   );
 }
