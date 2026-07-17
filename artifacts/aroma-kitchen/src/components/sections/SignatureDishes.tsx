@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Plus, Check } from 'lucide-react';
+import { Plus, Check, ShoppingCart } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 
 const signatureDishes = [
@@ -68,8 +68,14 @@ function OrderNowButton({ name, price }: { name: string; price: string }) {
           : 'border border-primary text-primary hover:bg-primary hover:text-white'
       }`}
     >
-      {flash ? <Check className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-      {qty > 0 ? `Added (${qty})` : 'Order Now'}
+      {flash ? (
+        <Check className="w-4 h-4" />
+      ) : qty > 0 ? (
+        <ShoppingCart className="w-4 h-4" />
+      ) : (
+        <Plus className="w-4 h-4" />
+      )}
+      {qty > 0 ? `${qty} in cart` : 'Order Now'}
     </button>
   );
 }

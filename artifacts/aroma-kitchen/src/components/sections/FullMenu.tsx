@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Check } from 'lucide-react';
+import { Plus, Check, ShoppingCart } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 
 const menuCategories = [
@@ -176,10 +176,12 @@ function AddButton({ name, price }: { name: string; price: string }) {
     >
       {flash ? (
         <Check className="w-3.5 h-3.5" />
+      ) : qty > 0 ? (
+        <ShoppingCart className="w-3.5 h-3.5" />
       ) : (
         <Plus className="w-3.5 h-3.5" />
       )}
-      {qty > 0 ? `${qty} Added` : 'Add'}
+      {qty > 0 ? `${qty} in cart` : 'Add'}
     </button>
   );
 }
