@@ -4,6 +4,8 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import { Route, Switch, Router as WouterRouter } from 'wouter';
 import Home from '@/pages/Home';
+import { FestivalThemeProvider } from '@/context/FestivalThemeContext';
+import { FestivalThemeBanner } from '@/components/ui/FestivalThemeBanner';
 
 const queryClient = new QueryClient();
 
@@ -20,9 +22,12 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
-          <Router />
-        </WouterRouter>
+        <FestivalThemeProvider>
+          <FestivalThemeBanner />
+          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+            <Router />
+          </WouterRouter>
+        </FestivalThemeProvider>
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>

@@ -1,0 +1,318 @@
+I have already completed the customer-facing restaurant website. I now want to add a separate Admin Dashboard that connects to the same backend and database.
+
+IMPORTANT:
+- Do NOT change the customer website design or functionality.
+- Create a completely separate admin application.
+- Use the existing backend if possible.
+- Follow production-level coding standards.
+- Make the UI modern, responsive, and secure.
+
+Tech Stack:
+- React + Vite
+- Node.js + Express
+- MongoDB (Mongoose)
+- JWT Authentication
+- Cloudinary for image uploads (optional)
+
+Project Structure:
+
+Customer Website
+/
+Admin Dashboard
+/admin
+
+OR
+
+customer.example.com
+admin.example.com
+
+==========================
+ADMIN LOGIN
+==========================
+
+Create a secure login page.
+
+Features:
+- Email
+- Password
+- JWT Authentication
+- Protected Routes
+- Logout
+- Session Persistence
+- Only admin users can access dashboard.
+
+==========================
+ADMIN DASHBOARD
+==========================
+
+Create a dashboard with sidebar navigation.
+
+Sidebar Menu:
+
+🏠 Dashboard
+
+🍽 Menu Management
+
+📦 Orders
+
+⭐ Reviews
+
+📂 Categories
+
+📈 Analytics
+
+⚙ Settings
+
+🚪 Logout
+
+==========================
+MENU MANAGEMENT
+==========================
+
+Display all food items in a table.
+
+Each item should have:
+
+- Image
+- Food Name
+- Category
+- Price
+- Description
+- Veg / Non Veg
+- Available / Out of Stock Toggle
+- Edit Button
+- Delete Button
+
+Add a floating "Add New Item" button.
+
+The Add Item form should allow:
+
+- Food Name
+- Description
+- Category
+- Price
+- Upload Image
+- Veg/Non Veg
+- Featured Item
+- Today's Special
+- Availability Toggle
+
+Save everything into MongoDB.
+
+==========================
+LIVE AVAILABILITY
+==========================
+
+Restaurant owner should be able to turn ON/OFF availability with one click.
+
+Example:
+
+Butter Chicken
+
+Available ✅
+
+↓
+
+Click Toggle
+
+↓
+
+Out of Stock ❌
+
+Customer website should instantly reflect this change after refresh without redeploying.
+
+When unavailable:
+
+- Show "Out of Stock"
+- Disable Order Button
+- Grey out the card slightly
+
+==========================
+CATEGORY MANAGEMENT
+==========================
+
+Admin can:
+
+Add Category
+
+Edit Category
+
+Delete Category
+
+Examples:
+
+Starters
+
+Main Course
+
+Desserts
+
+Beverages
+
+==========================
+ORDERS
+==========================
+
+Show all customer orders.
+
+Columns:
+
+Order ID
+
+Customer Name
+
+Phone
+
+Address
+
+Items
+
+Amount
+
+Payment Status
+
+Order Status
+
+Date
+
+Allow updating status:
+
+Pending
+
+Preparing
+
+Ready
+
+Delivered
+
+Cancelled
+
+==========================
+GOOGLE REVIEWS
+==========================
+
+Do NOT build a local review system.
+
+Only add a settings page where admin can update the Google Review URL.
+
+Customer website should automatically use this URL for the "Write a Review" button.
+
+==========================
+ANALYTICS
+==========================
+
+Dashboard cards:
+
+Total Orders
+
+Today's Orders
+
+Revenue
+
+Menu Items
+
+Out of Stock Items
+
+Recent Orders
+
+==========================
+SETTINGS
+==========================
+
+Restaurant Name
+
+Phone
+
+Email
+
+Address
+
+Opening Hours
+
+Google Maps Link
+
+WhatsApp Number
+
+Instagram
+
+Facebook
+
+Google Review Link
+
+Save in database.
+
+Customer website should automatically display updated settings.
+
+==========================
+API
+==========================
+
+Create REST APIs.
+
+POST /api/admin/login
+
+GET /api/menu
+
+POST /api/menu
+
+PUT /api/menu/:id
+
+DELETE /api/menu/:id
+
+PATCH /api/menu/:id/availability
+
+GET /api/orders
+
+PATCH /api/orders/:id
+
+GET /api/settings
+
+PUT /api/settings
+
+==========================
+SECURITY
+==========================
+
+Use:
+
+JWT Authentication
+
+Password Hashing (bcrypt)
+
+Protected Routes
+
+Role-based Access
+
+Input Validation
+
+Rate Limiting
+
+Helmet
+
+CORS
+
+==========================
+RESPONSIVE DESIGN
+==========================
+
+Desktop
+
+Tablet
+
+Mobile
+
+Use a clean modern restaurant admin theme.
+
+==========================
+IMPORTANT
+==========================
+
+Do NOT use dummy data.
+
+Everything must come from MongoDB.
+
+The customer website and admin dashboard must share the same database.
+
+When the admin edits menu items, prices, availability, images, categories, or settings, the customer website should automatically display the latest data without changing any frontend code.
+
+Write clean, modular, production-ready code with proper folder structure and comments.
