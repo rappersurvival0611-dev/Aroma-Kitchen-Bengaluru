@@ -1,3 +1,4 @@
 - [Zod v3 vs v4 in OpenAPI codegen](zod-v3-orval-codegen.md) — never use `format: email` in openapi.yaml specs generated with Orval when the workspace zod is v3.
 - [WhatsApp notifications without Twilio](whatsapp-walink-pattern.md) — default to wa.me pre-filled links for restaurant-style WhatsApp notifications instead of Twilio API.
 - [Firebase realtime theme pattern](firebase-realtime-theme-pattern.md) — read scheduled festival themes publicly; protect all writes through an admin path.
+- [Replit public domain lifecycle](replit-public-domain.md) — old repl.co links can stop resolving; use the active .replit.app deployment URL.
