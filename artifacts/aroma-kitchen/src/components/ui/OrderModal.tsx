@@ -41,15 +41,11 @@ export function OrderModal() {
     }
     if (!validate()) return;
 
-    const orderLines = items.map(i => `  • ${i.name} x${i.qty} — ${i.price}`).join('\n');
+    const orderLines = items.map(i => `  • ${i.name} x${i.qty}`).join('\n');
     const message = [
       '🛍️ New Food Order:',
       '',
       orderLines,
-      '',
-      `Subtotal: ₹${subtotal}`,
-      `Packing charges (${totalContainers} container${totalContainers !== 1 ? 's' : ''} × ₹${PACKING_RATE}): ₹${packingCharges}`,
-      `Total: ₹${totalPrice}`,
       '',
       `Name: ${name}`,
       `Phone: ${phone}`,
