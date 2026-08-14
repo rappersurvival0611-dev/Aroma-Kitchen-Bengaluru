@@ -30,8 +30,13 @@ Never enable public writes.
 ## Database shape
 
 In Realtime Database, create a `festivalThemes` node and add one child per
-festival. The active theme is selected by `active`, `startDate`, `endDate`,
-and then highest `priority`.
+festival. The active theme is selected by `active`, `festivalDate`,
+`beforeDays`, `afterDays`, and then highest `priority`.
+
+The recommended schedule is `beforeDays: 7` and `afterDays: 3`. The website
+clamps the pre-festival window to 5–7 days so a theme automatically starts
+within the requested range. You can also keep using explicit `startDate` and
+`endDate` values for a custom schedule.
 
 ```json
 {
@@ -41,8 +46,9 @@ and then highest `priority`.
       "emoji": "🇮🇳",
       "bannerText": "Happy Independence Day from Aroma Kitchen!",
       "active": true,
-      "startDate": "2026-08-01",
-      "endDate": "2026-08-20",
+      "festivalDate": "2026-08-15",
+      "beforeDays": 7,
+      "afterDays": 3,
       "priority": 10,
       "primary": "#FF7A00",
       "primaryForeground": "#FFFFFF",
@@ -59,8 +65,9 @@ and then highest `priority`.
       "emoji": "🎄",
       "bannerText": "Merry Christmas — enjoy a festive meal!",
       "active": true,
-      "startDate": "2026-12-01",
-      "endDate": "2026-12-31",
+      "festivalDate": "2026-12-25",
+      "beforeDays": 7,
+      "afterDays": 3,
       "priority": 10,
       "primary": "#B91C1C",
       "primaryForeground": "#FFFFFF",
@@ -78,3 +85,11 @@ and then highest `priority`.
 
 Set `active` to `false` to disable a festival immediately. If multiple themes
 overlap, the one with the highest `priority` wins.
+
+## Indian festival seed
+
+The project includes a Firebase Console import-ready starter file at
+`firebase/festivalThemes.seed.json`. It includes Indian national, Hindu,
+Sikh, regional, and Christian celebrations and intentionally does not include
+Eid or any other Islamic festival. Lunar festival dates should be updated in
+Firebase each year.

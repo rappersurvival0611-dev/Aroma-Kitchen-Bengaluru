@@ -8,6 +8,9 @@ export interface FestivalTheme {
   emoji?: string;
   bannerText?: string;
   active?: boolean;
+  festivalDate?: string;
+  beforeDays?: number;
+  afterDays?: number;
   startDate?: string;
   endDate?: string;
   priority?: number;
@@ -54,8 +57,21 @@ function toThemeArray(value: unknown): FestivalTheme[] {
 function isWithinDateRange(theme: FestivalTheme, now: Date): boolean {
   if (theme.active === false) return false;
 
-  const startsAt = theme.startDate ? new Date(`${theme.startDate}T00:00:00`) : null;
-  const endsAt = theme.endDate ? new Date(`${theme.endDate}T23:59:59`) : null;
+  const festivalDate = theme.festivalDate
+    ? new Date(`${theme.festivalDate}T00:00:00`)
+    : null;
+  const beforeDays = Math.min(Math.max(Number(theme.beforeDays ?? 7), 5), 7);
+  const afterDays = Math.max(Number(theme.afterDays ?? 3), 0);
+  const startsAt = festivalDate && !Number.isNaN(festivalDate.getTime())
+    ? new Date(festivalDate.getTime() - beforeDays * 24 * 60 * 60 * 1000)
+    : theme.startDate
+      ? new Date(`${theme.startDate}T00:00:00`)
+      : null;
+  const endsAt = festivalDate && !Number.isNaN(festivalDate.getTime())
+    ? new Date(festivalDate.getTime() + (afterDays + 1) * 24 * 60 * 60 * 1000 - 1000)
+    : theme.endDate
+      ? new Date(`${theme.endDate}T23:59:59`)
+      : null;
 
   if (startsAt && !Number.isNaN(startsAt.getTime()) && now < startsAt) return false;
   if (endsAt && !Number.isNaN(endsAt.getTime()) && now > endsAt) return false;
